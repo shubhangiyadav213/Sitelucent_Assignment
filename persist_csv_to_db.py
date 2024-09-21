@@ -44,7 +44,7 @@ def save_csv_to_db(csv_path, mainCurrencyCode):
     session = Session()
     metadata = MetaData()
 
-    csvTable = Table('CSV_FILE', metadata, autoload_with=engine)        #access file using defined engine 
+    csvTable = Table('CSV_FILE', metadata, autoload_with=engine)        #Reflects the CSV_FILE table schema in SQLAlchemy.
     fileId = createEntryForCsvFile(csv_path, session, csvTable)
 
     table = Table('REF_CURRENCY', metadata, autoload_with=engine)
