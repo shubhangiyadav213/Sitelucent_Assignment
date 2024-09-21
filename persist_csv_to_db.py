@@ -47,7 +47,7 @@ def save_csv_to_db(csv_path, mainCurrencyCode):
     csvTable = Table('CSV_FILE', metadata, autoload_with=engine)        #Reflects the CSV_FILE table schema in SQLAlchemy.
     fileId = createEntryForCsvFile(csv_path, session, csvTable)
 
-    table = Table('REF_CURRENCY', metadata, autoload_with=engine)
+    table = Table('REF_CURRENCY', metadata, autoload_with=engine)        #Reflects the REF_CURRENCY table schema in SQLAlchemy.
     key_value_pairs = loadCurrencyTableData(session, table)
 
     df = pd.read_csv(csv_path)
@@ -67,7 +67,7 @@ def save_csv_to_db(csv_path, mainCurrencyCode):
     session.commit()
     key_value_pairs = loadCurrencyTableData(session, table)
 
-    conversionTable = Table('CURRENCY_CONVERSION_RATES', metadata, autoload_with=engine)
+    conversionTable = Table('CURRENCY_CONVERSION_RATES', metadata, autoload_with=engine)        #Reflects the CURRENCY_CONVERSION_RATES table schema in SQLAlchemy.
 
     currency_id_1 = checkInMap(key_value_pairs, mainCurrencyCode)
     print(df)
